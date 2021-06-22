@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FormInstance, FormItemProps, FormProps } from 'antd/es/form';
 import { Input, Form, Row, Col, TimePicker, InputNumber, DatePicker, Select } from 'antd';
@@ -400,11 +402,11 @@ export const proFormItemRender: (props: {
     return rest.title;
   };
   return (
-    <Col {...colConfig} key={key}>
+    <Col {...colConfig} key={key as number}>
       <Form.Item
         labelAlign="right"
         label={getTitle()}
-        name={Array.isArray(dataIndex) ? dataIndex : key}
+        name={Array.isArray(dataIndex) ? (dataIndex as any[]) : (key as number)}
         {...(isForm && rest)}
       >
         {dom}
@@ -576,7 +578,7 @@ const getSpanConfig = (
   return config[size];
 };
 
-const FormSearch = <T, U = {}>({
+const FormSearch = <T,>({
   onSubmit,
   formRef,
   dateFormatter = 'string',
@@ -617,7 +619,7 @@ const FormSearch = <T, U = {}>({
   const submit = async () => {
     // 如果不是表单模式，不用进行验证
     if (!isForm) {
-      const value = form.getFieldsValue();
+      const value = form.getFieldsValue(true);
       if (onSubmit) {
         onSubmit(conversionValue(value, dateFormatter, proColumnsMap) as T);
       }

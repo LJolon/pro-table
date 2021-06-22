@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import React from 'react';
 import { ConfigConsumer, ConfigConsumerProps } from 'antd/lib/config-provider/context';
 import { Alert, Space } from 'antd';
@@ -29,7 +31,7 @@ const defaultAlertOptionRender = (props: { intl: IntlType; onCleanSelected: () =
   ];
 };
 
-const TableAlert = <T, U = {}>({
+const TableAlert = <T,>({
   selectedRowKeys = [],
   onCleanSelected,
   selectedRows = [],

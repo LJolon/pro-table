@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import React from 'react';
 import { ConfigConsumer, ConfigConsumerProps } from 'antd/lib/config-provider/context';
 import { PushpinOutlined, SettingOutlined, VerticalAlignMiddleOutlined } from '@ant-design/icons';
@@ -144,14 +146,14 @@ const CheckboxList: React.FC<{
       <DnDItem
         index={index}
         id={`${columnKey}_${rest.index}`}
-        key={columnKey}
+        key={columnKey as number}
         end={(id, targetIndex) => {
           move(id, targetIndex);
         }}
       >
         <CheckboxListItem
           setColumnsMap={setColumnsMap}
-          columnKey={columnKey || `${index}`}
+          columnKey={(columnKey as number) || (`${index}` as string | number)}
           columnsMap={columnsMap}
           title={title}
           fixed={fixed}
@@ -216,7 +218,7 @@ const GroupCheckboxList: React.FC<{
   );
 };
 
-const ColumnSetting = <T, U = {}>(props: ColumnSettingProps<T>) => {
+const ColumnSetting = <T,>(props: ColumnSettingProps<T>) => {
   const counter = Container.useContainer();
   const localColumns: Omit<ProColumns<any> & { index?: number }, 'ellipsis'>[] =
     props.columns || counter.columns || [];
@@ -230,7 +232,7 @@ const ColumnSetting = <T, U = {}>(props: ColumnSettingProps<T>) => {
     localColumns.forEach(({ key, fixed, dataIndex, index }) => {
       const columnKey = genColumnKey(key, dataIndex, index);
       if (columnKey) {
-        columnKeyMap[columnKey] = {
+        columnKeyMap[columnKey as number] = {
           show,
           fixed,
         };

@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import React from 'react';
 import { Progress, Avatar } from 'antd';
 import moment from 'moment';
@@ -104,7 +106,7 @@ const defaultRenderTextByObject = (text: string | number, value: ProColumnsValue
  * @param text
  * @param valueType
  */
-const defaultRenderText = <T, U>(
+const defaultRenderText = <T,>(
   text: string | number | React.ReactText[],
   valueType: ProColumnsValueType | ProColumnsValueTypeFunction<T>,
   index: number,

@@ -1,6 +1,6 @@
 {
   "name": "@ant-design/pro-table",
-  "version": "2.4.4",
+  "version": "2.6.6",
   "description": "🏆 Use Ant Design Table like a Pro!",
   "repository": "https://github.com/ant-design/pro-table",
   "license": "MIT",
@@ -80,7 +80,9 @@
     "husky": "^4.2.5",
     "jsdom-global": "^3.0.2",
     "less-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "np": "^6.2.3",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "react-github-btn": "^1.1.1",
@@ -99,7 +101,7 @@
     "react": "16.x"
   },
   "authors": {
-    "name": "chenshuai2144",
-    "email": "qixian.cs@outlook.com"
+    "name": "linzhoulong",
+    "email": "zhoulong.lzl@quadtalent.com"
   }
 }

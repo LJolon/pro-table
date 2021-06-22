@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 /* eslint-disable @typescript-eslint/naming-convention */
 import React, { ReactNode, useEffect, useRef, ReactText, DependencyList, useCallback } from 'react';
 import isEqual from 'lodash.isequal';
@@ -64,13 +66,13 @@ export const parsingValueEnumToArray = (
 
     if (typeof value === 'object' && value?.text) {
       enumArray.push({
-        text: (value?.text as unknown) as string,
+        text: value?.text as unknown as string,
         value: key,
       });
       return;
     }
     enumArray.push({
-      text: ((value || '') as unknown) as string,
+      text: (value || '') as unknown as string,
       value: key,
     });
   });
@@ -169,7 +171,7 @@ export default function get(entity: any, path: ReactText | ReactText[]) {
   return current;
 }
 
-export const usePrevious = <T, U = T>(state: T): T | undefined => {
+export const usePrevious = <T,>(state: T): T | undefined => {
   const ref = useRef<T>();
 
   useEffect(() => {

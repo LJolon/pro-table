@@ -1,3 +1,5 @@
+//  @ts-nocheck
+
 import './index.less';
 
 import React, { useEffect, CSSProperties, useRef, useState, ReactNode } from 'react';
@@ -191,7 +193,7 @@ export interface ProTableProps<T, U extends { [key: string]: any }>
    * 渲染 table
    */
   tableRender?: (
-    props: ProTableProps<T, U>,
+    props: ProTableProps<T>,
     defaultDom: JSX.Element,
     /**
      * 各个区域的 dom
@@ -337,7 +339,7 @@ export interface ProTableProps<T, U extends { [key: string]: any }>
   columnEmptyText?: ColumnEmptyText;
 }
 
-const mergePagination = <T extends any[], U>(
+const mergePagination = <T extends any[]>(
   pagination: TablePaginationConfig | boolean | undefined = {},
   action: UseFetchDataAction<RequestData<T>>,
   intl: IntlType,
@@ -433,7 +435,7 @@ const genCopyable = (dom: React.ReactNode, item: ProColumns<any>) => {
  * 这个组件负责单元格的具体渲染
  * @param param0
  */
-const columnRender = <T, U = any>({
+const columnRender = <T,>({
   item,
   text,
   row,
@@ -495,7 +497,7 @@ const columnRender = <T, U = any>({
  * @param map
  * @param columnEmptyText
  */
-const genColumnList = <T, U = {}>(
+const genColumnList = <T,>(
   columns: ProColumns<T>[],
   map: {
     [key: string]: ColumnsState;
@@ -503,9 +505,10 @@ const genColumnList = <T, U = {}>(
   counter: ReturnType<typeof useCounter>,
   columnEmptyText?: ColumnEmptyText,
 ): (ColumnsType<T>[number] & { index?: number })[] =>
-  (columns
+  columns
     .map((item, columnsIndex) => {
       const { key, dataIndex, title, filters = [] } = item;
+      const hideInSearch = false;
       const columnKey = genColumnKey(key, dataIndex, columnsIndex);
       const config = columnKey ? map[columnKey] || { fixed: item.fixed } : { fixed: item.fixed };
       const valueEnum = ObjToMap(item.valueEnum);
@@ -522,6 +525,7 @@ const genColumnList = <T, U = {}>(
         ...item,
         title: title && typeof title === 'function' ? title(item, 'table') : title,
         valueEnum,
+        hideInSearch,
         filters:
           filters === true
             ? parsingValueEnumToArray(valueEnum).filter(
@@ -553,7 +557,7 @@ const genColumnList = <T, U = {}>(
       }
       return tempColumns;
     })
-    .filter((item) => !item.hideInTable) as unknown) as ColumnsType<T>[number] &
+    .filter((item) => !item.hideInTable) as unknown as ColumnsType<T>[number] &
     {
       index?: number;
     }[];
@@ -690,6 +694,8 @@ const ProTable = <T extends {}, U extends object>(
   useEffect(() => {
     // 数据源更新时 取消所有选中项
     // onCleanSelected();
+
+    // action.dataSource.push({})
     setDataSource(request ? (action.dataSource as T[]) : props.dataSource || []);
   }, [props.dataSource, action.dataSource]);
 
@@ -956,6 +962,9 @@ const ProTable = <T extends {}, U extends object>(
       loading={action.loading || props.loading}
       dataSource={dataSource}
       pagination={pagination}
+      search={{
+        collapsed: true,
+      }}
       onChange={(
         changePagination: TablePaginationConfig,
         filters: {
@@ -1015,7 +1024,7 @@ const ProTable = <T extends {}, U extends object>(
 
   return (
     <ConfigProvider
-      getPopupContainer={() => ((rootRef.current || document.body) as any) as HTMLElement}
+      getPopupContainer={() => (rootRef.current || document.body) as any as HTMLElement}
     >
       <div className={className} id="ant-design-pro-table" style={style} ref={rootRef}>
         {(search || type === 'form') && (

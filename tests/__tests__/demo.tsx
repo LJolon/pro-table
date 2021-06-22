@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react';
 import moment from 'moment';
 import { ProColumns, TableStatus, TableDropdown } from '../../src';

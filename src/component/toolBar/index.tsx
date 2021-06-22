@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { ReloadOutlined, SettingOutlined } from '@ant-design/icons';
 import { Divider, Space, Tooltip, Input } from 'antd';
@@ -40,7 +41,7 @@ export interface ToolBarProps<T = unknown> {
   onSearch?: (keyWords: string) => void;
 }
 
-const getButtonText = <T, U = {}>({
+const getButtonText = <T,>({
   intl,
 }: OptionConfig<T> & {
   intl: IntlType;
@@ -68,7 +69,7 @@ const getButtonText = <T, U = {}>({
  * @param options
  * @param className
  */
-const renderDefaultOption = <T, U = {}>(
+const renderDefaultOption = <T,>(
   options: ToolBarProps<T>['options'],
   className: string,
   defaultOptions: OptionConfig<T> & {
@@ -121,7 +122,7 @@ const renderDefaultOption = <T, U = {}>(
     })
     .filter((item) => item);
 
-const ToolBar = <T, U = {}>({
+const ToolBar = <T,>({
   headerTitle,
   toolBarRender,
   action,
@@ -203,7 +204,7 @@ const ToolBar = <T, U = {}>({
   );
 };
 
-const WarpToolBar = <T, U = {}>(props: ToolBarProps<T>) => (
+const WarpToolBar = <T,>(props: ToolBarProps<T>) => (
   <ConfigConsumer>
     {({ getPrefixCls }: ConfigConsumerProps) => {
       const className = getPrefixCls('pro-table-toolbar');
