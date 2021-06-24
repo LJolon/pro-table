@@ -241,14 +241,31 @@ export function useDebounceFn<T extends any[]>(
 }
 
 export const getLang = (): string => {
-  const isNavigatorLanguageValid =
+  var isNavigatorLanguageValid =
     typeof navigator !== 'undefined' && typeof navigator.language === 'string';
-  const browserLang = isNavigatorLanguageValid
-    ? navigator.language.split('-').join('{{BaseSeparator}}')
-    : '';
-  const lang = typeof localStorage !== 'undefined' ? window.localStorage.getItem('umi_locale') : '';
-  return lang || browserLang || '';
+  var browserLang = isNavigatorLanguageValid ? navigator.language.split('-').join('_') : '';
+  var lang =
+    typeof localStorage !== 'undefined' ? window.localStorage.getItem('hiforce_locale') : '';
+  /* 读取index.html中的语言设置 */
+  const pageData = window.hiforcePageData;
+  let pageLang;
+  let langArr = ['en_US', 'zh_CN'];
+  if (pageData) {
+    pageLang = pageData.i18n.split('-').join('_');
+    pageLang = langArr.find((v) => v === pageLang) || 'zh_CN';
+  }
+  return pageLang || lang || browserLang || '';
 };
+
+// export const getLang = (): string => {
+//   const isNavigatorLanguageValid =
+//     typeof navigator !== 'undefined' && typeof navigator.language === 'string';
+//   const browserLang = isNavigatorLanguageValid
+//     ? navigator.language.split('-').join('{{BaseSeparator}}')
+//     : '';
+//   const lang = typeof localStorage !== 'undefined' ? window.localStorage.getItem('umi_locale') : '';
+//   return lang || browserLang || '';
+// };
 
 /**
  * 删除对象中所有的空值
