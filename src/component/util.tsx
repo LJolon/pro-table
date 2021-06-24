@@ -1,5 +1,5 @@
 //  @ts-nocheck
-
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/naming-convention */
 import React, { ReactNode, useEffect, useRef, ReactText, DependencyList, useCallback } from 'react';
 import isEqual from 'lodash.isequal';
@@ -241,15 +241,15 @@ export function useDebounceFn<T extends any[]>(
 }
 
 export const getLang = (): string => {
-  var isNavigatorLanguageValid =
+  const isNavigatorLanguageValid =
     typeof navigator !== 'undefined' && typeof navigator.language === 'string';
-  var browserLang = isNavigatorLanguageValid ? navigator.language.split('-').join('_') : '';
-  var lang =
+  const browserLang = isNavigatorLanguageValid ? navigator.language.split('-').join('_') : '';
+  const lang =
     typeof localStorage !== 'undefined' ? window.localStorage.getItem('hiforce_locale') : '';
   /* 读取index.html中的语言设置 */
   const pageData = window.hiforcePageData;
   let pageLang;
-  let langArr = ['en_US', 'zh_CN'];
+  const langArr = ['en_US', 'zh_CN'];
   if (pageData) {
     pageLang = pageData.i18n.split('-').join('_');
     pageLang = langArr.find((v) => v === pageLang) || 'zh_CN';
