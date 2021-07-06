@@ -1,7 +1,8 @@
+# FORK antd/pro-table 自己修改发布插件自用
+
 # 此仓库已废弃
 
 **重要：** 此仓库后续不再维护，也不再接受更多的特性更新。`ant-design/pro-table` 将会迁移至 `ant-design/pro-components` 仓库进行后续的维护，访问 https://procomponents.ant.design/table 了解更多。此变更不影响继续使用 `@ant-design/pro-table` 这个 npm 包名安装使用此组件。
-
 
 [English](./README.en_US.md)
 
@@ -24,7 +25,7 @@ pro-table 在 antd 的 table 上进行了一层封装，支持了一些预设，
 ## Table
 
 | 属性 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | request | 一个获得 dataSource 的方法 | `(params?: {pageSize: number;current: number;[key: string]: any;}) => Promise<RequestData<T>>` | - |
 | postData | 对通过 url 获取的数据进行一些处理 | `(data: T[]) => T[]` | - |
 | defaultData | 默认的数据 | `T[]` | - |
@@ -40,8 +41,8 @@ pro-table 在 antd 的 table 上进行了一层封装，支持了一些预设，
 | dateFormatter | moment 的格式化方式 | `"string" \| "number" \| false` | string |
 | beforeSearchSubmit | 搜索之前进行一些修改 | `(params:T)=>T` | - |
 | onSizeChange | table 尺寸发生改变 | `(size: 'default' | 'middle' | 'small' | undefined) => void` | - |
-| columnsStateMap | columns 的状态枚举 | `{[key: string]: { show:boolean, fixed: "right"|"left"} }` | - |
-| onColumnsStateChange | columns 状态发生改变 | `(props: {[key: string]: { show:boolean, fixed: "right"|"left"} }) => void` | - |
+| columnsStateMap | columns 的状态枚举 | `{[key: string]: { show:boolean, fixed: "right" | "left"} }` | - |
+| onColumnsStateChange | columns 状态发生改变 | `(props: {[key: string]: { show:boolean, fixed: "right" | "left"} }) => void` | - |
 | type | pro-table 类型 | `"form"` | - |
 | form | antd form 的配置 | `FormProps` | - |
 

@@ -9,6 +9,7 @@ import ruRU from '../../locale/ru_RU';
 import msMY from '../../locale/ms_MY';
 import zhTW from '../../locale/zh_TW';
 import frFR from '../../locale/fr_FR';
+import thTh from '../../locale/th_TH';
 import { getLang } from '../util';
 
 export interface IntlType {
@@ -49,6 +50,7 @@ const viVNIntl = createIntl('vi_VN', viVN);
 const itITIntl = createIntl('it_IT', itIT);
 const jaJPIntl = createIntl('ja_JP', jaJP);
 const esESIntl = createIntl('es_ES', esES);
+const thTHIntl = createIntl('th_TH', thTh);
 const ruRUIntl = createIntl('ru_RU', ruRU);
 const msMYIntl = createIntl('ms_MY', msMY);
 const zhTWIntl = createIntl('zh_TW', zhTW);
@@ -64,10 +66,22 @@ const intlMap = {
   'ru-RU': ruRUIntl,
   'ms-MY': msMYIntl,
   'zh-TW': zhTWIntl,
+  'th-TH': thTHIntl,
   'fr-FR': frFRIntl,
 };
 
-export { enUSIntl, zhCNIntl, viVNIntl, itITIntl, jaJPIntl, esESIntl, ruRUIntl, msMYIntl, zhTWIntl };
+export {
+  enUSIntl,
+  zhCNIntl,
+  viVNIntl,
+  itITIntl,
+  jaJPIntl,
+  esESIntl,
+  ruRUIntl,
+  msMYIntl,
+  zhTWIntl,
+  thTHIntl,
+};
 
 const IntlContext = React.createContext<IntlType>(intlMap[getLang() || ''] || zhCNIntl);
 

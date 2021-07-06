@@ -1,0 +1,43 @@
+export default {
+  moneySymbol: '￥',
+  tableForm: {
+    search: 'สอบถาม',
+    reset: 'รีเซ็ต',
+    submit: 'ส่ง',
+    collapsed: 'ขยายออก',
+    expand: 'ม้วนขึ้น',
+    inputPlaceholder: 'โปรกกรอก',
+    selectPlaceholder: 'โปรดเลือก',
+  },
+  alert: {
+    clear: 'ลบล้าง',
+    selected: 'เลือกแล้ว',
+    item: 'รายการ',
+  },
+  pagination: {
+    total: {
+      range: 'ที่',
+      total: 'ข้อ/รวม',
+      item: 'ข้อ',
+    },
+  },
+  tableToolBar: {
+    leftPin: 'ยึดคงที่ด้านซ้าย',
+    rightPin: 'ยึดคงที่ด้านขวา',
+    noPin: 'ยกเลิกการยึดติด',
+    leftFixedTitle: 'ยึดคงที่ข้างซ้าย',
+    rightFixedTitle: 'ยึดคงที่ข้างขวา',
+    noFixedTitle: 'ไม่ยึดคงที่',
+    reset: 'รีเซ็ต',
+    columnDisplay: 'แสดงคอลัมน์',
+    columnSetting: 'ตั้งค่าคอลัมน์',
+    fullScreen: 'หน้าจอเต็ม',
+    exitFullScreen: 'ออกจากหน้าจอเต็ม',
+    reload: 'รีแฟรช',
+    density: 'ความหนาแน่น',
+    densityDefault: 'ปกติ',
+    densityLarger: 'ค่าเริ่มต้น',
+    densityMiddle: 'ค่าเริ่มต้น',
+    densitySmall: 'กระชับ',
+  },
+};

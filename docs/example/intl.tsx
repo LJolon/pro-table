@@ -13,6 +13,7 @@ import ProTable, {
   esESIntl,
   ruRUIntl,
   msMYIntl,
+  thTHIntl,
   ActionType,
   // @ts-ignore
 } from '@ant-design/pro-table';
@@ -27,6 +28,7 @@ const intlMap = {
   esESIntl,
   ruRUIntl,
   msMYIntl,
+  thTHIntl,
 };
 
 interface GithubIssueItem {
