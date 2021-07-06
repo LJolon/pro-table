@@ -249,7 +249,7 @@ export const getLang = (): string => {
   /* 读取index.html中的语言设置 */
   const pageData = window.hiforcePageData;
   let pageLang;
-  const langArr = ['en-US', 'zh-CN'];
+  const langArr = ['en-US', 'zh-CN', 'th-TH'];
   if (pageData) {
     pageLang = pageData.i18n.split('_').join('-');
     pageLang = langArr.find((v) => v === pageLang) || 'zh-CN';
